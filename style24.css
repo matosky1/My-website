@@ -67,11 +67,24 @@ body{
 .navbar a.active{
     color: var(--main-color)
 }
-#menu-icon{
-    font-size: 3.6rem;
-    color: var(--text-color);
+/* Hamburger Menu Styles */
+#menu-toggle {
+    display: none; /* Hide by default */
+}
+
+.menu-icon {
+    display: none; /* Hide by default */
     cursor: pointer;
-    display: none;
+    user-select: none;
+}
+
+.menu-icon span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    margin: 6px auto;
+    transition: background-color 0.3s ease-in-out;
 }
 section{
     min-height: 100vh;
@@ -565,26 +578,45 @@ span {
     }
 }
 
-/* Your existing CSS styles */
 
-/* Media Query for Tablets */
-@media (max-width: 991px) {
-    /* Adjust styles for tablet screens here */
-    .header {
-        padding: 2rem 4%;
-    }
-    /* ... other adjustments */
-}
-
-/* Media Query for Mobile Devices */
-@media (max-width: 786px) {
-    /* Adjust styles for mobile screens here */
-    .header {
-        background: var(--bg-color);
-    }
-
-    #menu-icon {
+@media screen and (max-width: 768px) {
+    .menu-icon {
         display: block;
+        cursor: pointer;
     }
-    /* ... other adjustments */
+
+    .navbar {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem 4%;
+        background: var(--main-color);
+        box-shadow: 0.5rem 1rem rgba(0, 0, 0, .2);
+        transition: .25s ease;
+        z-index: 99;
+    }
+
+    .navbar.active {
+        display: block;
+        width: 100%;
+        z-index: 99;
+    }
+
+    .navbar a {
+        display: block;
+        font-size: 2rem;
+        margin: 3rem 0;
+        color: var(--text-color);
+        text-align: center;
+        transition: .3s;
+    }
+
+    .navbar a:hover {
+        color: var(--main-color);
+    }
+    #menu-toggle:checked + .menu-icon #menu-icon {
+        transform: rotate(45deg);
+    }
 }

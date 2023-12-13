@@ -16,8 +16,11 @@
     <header class="header">
         <a href="#" class="logo"> Anthony.</a>
 
-<div class="bx bx-menu" id="menu-icon"></div>
 
+        <input type="checkbox" id="menu-toggle" />
+<label for="menu-toggle" class="menu-icon">
+    <span class='bx bx-menu'></span> <!-- Boxicons menu icon -->
+</label>
 
 
         <nav class="navbar">
@@ -194,11 +197,28 @@
 </section>
 
 
-    
-
-     <script src="js/script5.js"></script>
-
      
+
+<script>
+   // Function to toggle menu visibility and change icon
+function toggleMenu() {
+    const navbar = document.querySelector('.navbar');
+    navbar.classList.toggle('active');
+}
+
+// Event listener to handle menu icon click
+document.getElementById('menu-toggle').addEventListener('click', toggleMenu);
+
+// Close the menu when a menu item is clicked
+document.querySelectorAll('.navbar a').forEach((item) => {
+    item.addEventListener('click', () => {
+        const navbar = document.querySelector('.navbar');
+        navbar.classList.remove('active');
+    });
+});
+
+</script>
+
 
      
     
